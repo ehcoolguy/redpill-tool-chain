@@ -33,7 +33,8 @@ build_redpill_load:
 	echo "#############################################"
 	@read -a KVERS <<< "$$(modinfo --field=vermagic redpill-lkm/redpill.ko)" && \
 	cp -f $(REDPILL_LKM_SRC)/redpill.ko $(REDPILL_LOAD_SRC)/ext/rp-lkm/redpill-linux-v$${KVERS[0]}.ko
-	./helper.sh
+	#./helper.sh
+	export TARGET_NAME=DS918+
 	pushd $(REDPILL_LOAD_SRC) && ./build-loader.sh '$(TARGET_NAME)' '$(TARGET_VERSION)-$(TARGET_REVISION)'
 
 .PHONY: build_all
